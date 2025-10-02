@@ -10,6 +10,7 @@ package es.uniovi.ds.lab.main;
 import java.io.IOException;
 
 import es.uniovi.ds.lab.files.FileSystem;
+import es.uniovi.ds.lab.outputs.*;
 
 public class Main {
 
@@ -17,8 +18,8 @@ public class Main {
 
         FileSystem fileSystem = new FileSystem();
 
-        fileSystem.copyFile("private.txt", "copy.txt");
-        fileSystem.upload("private.txt", "156.17.11.196");
-        fileSystem.sendByBluetooth("private.txt", "Galaxy de Raúl");
+        fileSystem.copy("private.txt", new FileOutput("copy.txt"));
+        fileSystem.copy("private.txt", new InternetOutput("1.1.1.1"));
+        fileSystem.copy("private.txt", new BluetoothOutput("iPhone"));
     }
 }
