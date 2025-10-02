@@ -16,10 +16,10 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        FileSystem fileSystem = new FileSystem();
+        FileSystem system = new FileSystem();
 
-        fileSystem.copy("private.txt", new FileOutput("copy.txt"));
-        fileSystem.copy("private.txt", new InternetOutput("1.1.1.1"));
-        fileSystem.copy("private.txt", new BluetoothOutput("iPhone"));
+        system.copy("private.txt", new FileOutput("copy.txt"));
+        system.copy("private.txt", new InternetOutput("1.1.1.1"));
+        system.copy("private.txt", new BluetoothOutput("iPhone"));
     }
 }
