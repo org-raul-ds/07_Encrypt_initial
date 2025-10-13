@@ -5,6 +5,7 @@ import java.io.*;
 import es.uniovi.ds.lab.files.Output;
 
 public class BluetoothOutput implements Output {
+
     public BluetoothOutput(String device) {
         stringWriter = new StringWriter();
         stringWriter.append("\n--- START Bluetooth[" + device + "]\n");
