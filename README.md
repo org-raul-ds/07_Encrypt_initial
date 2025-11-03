@@ -5,13 +5,13 @@
 ### Reference Design
 
 Changes:
-- When making a copy of a file on disk (what copyFile previously did), we want to normalize line breaks (remove '\r' and leave only '\n').
+- When making a copy of a file on disk (what `copyFile` previously did), we want to normalize line breaks (remove '\r' and leave only '\n').
 - When sending over the Internet, we want to encrypt (+1 if it's a letter or digit).
 - When sending over Bluetooth, we want to encrypt (in the same way as before) and remove repeated spaces.
 
 ### Modification 1
 
-When making a copy of a file on disk (what copyFile previously did), in addition to normalizing line breaks (removing '\r'), there are times when we also want to encrypt. In the main, it should be possible to indicate whether, when making the copy, we want to encrypt or not.
+When making a copy of a file on disk (what `copyFile` previously did), in addition to normalizing line breaks (removing '\r'), there are times when we also want to encrypt. In the main, it should be possible to indicate whether, when making the copy, we want to encrypt or not.
 
 ```java
 void main () {
