@@ -1,4 +1,4 @@
-package es.uniovi.ds.lab.files;
+package es.uniovi.ds.lab.v2.files;
 
 import java.io.*;
 

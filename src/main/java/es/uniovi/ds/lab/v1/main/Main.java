@@ -1,4 +1,4 @@
-package es.uniovi.ds.lab.main;
+package es.uniovi.ds.lab.v1.main;
 
 /**
  * # IMPORTANT: The code provided for this exercise is the minimum necessary to understand
@@ -9,8 +9,7 @@ package es.uniovi.ds.lab.main;
 
 import java.io.IOException;
 
-import es.uniovi.ds.lab.files.FileSystem;
-import es.uniovi.ds.lab.outputs.*;
+import es.uniovi.ds.lab.v1.files.FileSystem;
 
 public class Main {
 
@@ -18,8 +17,8 @@ public class Main {
 
         FileSystem system = new FileSystem();
 
-        system.copy("private.txt", new FileOutput("copy.txt"));
-        system.copy("private.txt", new InternetOutput("1.1.1.1"));
-        system.copy("private.txt", new BluetoothOutput("iPhone"));
+        system.copyFile("private.txt", "copia.txt");
+        system.sendToInternet("private.txt", "156.17.11.196");
+        system.sendWithBluetooth("private.txt", "Galaxy de Raúl");
     }
 }

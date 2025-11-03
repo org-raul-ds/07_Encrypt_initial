@@ -1,8 +1,8 @@
-package es.uniovi.ds.lab.outputs;
+package es.uniovi.ds.lab.v2.outputs;
 
 import java.io.*;
 
-import es.uniovi.ds.lab.files.Output;
+import es.uniovi.ds.lab.v2.files.Output;
 
 public class FileOutput implements Output {
 
