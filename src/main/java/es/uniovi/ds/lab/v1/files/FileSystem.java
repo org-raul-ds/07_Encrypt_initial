@@ -20,7 +20,7 @@ public class FileSystem {
     public void sendToInternet(String name, String url) {
         try {
             StringWriter stringWriter = new StringWriter();
-            stringWriter.append("\n--- START. Conectando a Internet[" + url + "]\n");
+            stringWriter.append("\n--- START. Connecting to the Internet[" + url + "]\n");
 
             try (FileReader reader = new FileReader(name)) {
                 int c;
@@ -29,7 +29,7 @@ public class FileSystem {
             }
 
             System.out.print(stringWriter.toString());
-            System.out.println("--- END. Cerrando conexión a Internet");
+            System.out.println("--- END. Closing Internet connection");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -39,7 +39,7 @@ public class FileSystem {
     public void sendWithBluetooth(String name, String device) {
         try {
             StringWriter stringWriter = new StringWriter();
-            stringWriter.append("\n--- START. Conectando con Bluetooth[" + device + "]\n");
+            stringWriter.append("\n--- START. Connecting with Bluetooth[" + device + "]\n");
 
             try (FileReader reader = new FileReader(name)) {
                 int c;
@@ -48,7 +48,7 @@ public class FileSystem {
             }
 
             System.out.print(stringWriter.toString());
-            System.out.println("--- END. Cerrando conexión Bluetooth");
+            System.out.println("--- END. Closing Bluetooth connection");
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -8,7 +8,7 @@ public class BluetoothOutput implements Output {
 
     public BluetoothOutput(String device) {
         stringWriter = new StringWriter();
-        stringWriter.append("\n--- START Bluetooth[" + device + "]\n");
+        stringWriter.append("\n--- START. Connecting with Bluetooth[" + device + "]\n");
     }
 
     public void send(char c) throws IOException {
@@ -17,7 +17,7 @@ public class BluetoothOutput implements Output {
 
     public void close() throws IOException {
         System.out.print(stringWriter.toString());
-        System.out.println("--- END   Bluetooth");
+        System.out.println("--- END. Closing Bluetooth connection");
     }
 
     private StringWriter stringWriter;
