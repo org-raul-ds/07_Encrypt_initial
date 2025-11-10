@@ -4,10 +4,18 @@
 
 ### Reference Design
 
-Changes:
-- When making a copy of a file on disk (what `copyFile` previously did), we want to normalize line breaks (remove '\r' and leave only '\n').
-- When sending over the Internet, we want to encrypt (+1 if it's a letter or digit).
-- When sending over Bluetooth, we want to encrypt (in the same way as before) and remove repeated spaces.
+Currently, the design to copy a file to different outputs is as follows:
+
+```java
+system.copy("private.txt", new FileOutput("copy.txt"));
+system.copy("private.txt", new InternetOutput("1.1.1.1"));
+system.copy("private.txt", new BluetoothOutput("iPhone"));
+```
+
+We are asked to implement the following changes:
+1. When making a copy of a file on disk (the first statement), we want to normalize line breaks (remove '\r' and leave only '\n').
+2. When sending over the Internet, we want to encrypt (+1 if it's a letter or digit).
+3. When sending over Bluetooth, we want to encrypt (in the same way as before) and remove repeated spaces.
 
 ### Modification 1
 
@@ -16,8 +24,8 @@ When making a copy of a file on disk (what `copyFile` previously did), in additi
 ```java
 void main () {
     …
-    fs.copy("privado.txt" … "a.txt");	// Be able to indicate that "a.txt" remains unencrypted
-    fs.copy("privado.txt" … "b.txt");	// Be able to indicate that "b.txt" remains encrypted
+    fs.copy("private.txt" … "a.txt");	// Be able to indicate that "a.txt" remains unencrypted
+    fs.copy("private.txt" … "b.txt");	// Be able to indicate that "b.txt" remains encrypted
 }
 ```
 
@@ -28,9 +36,9 @@ When sending over the Internet, in addition to encrypting, we want to be able to
 ```java
 void main () {
     …
-    fs.copy("privado.txt" … "1.1.1.1");	// This sending normalized (without '\r')
-    fs.copy("privado.txt" … "1.1.1.2");	// This sending without repeated spaces
-    fs.copy("privado.txt" … "1.1.1.3");	// This normalized and without repeated spaces
+    fs.copy("private.txt" … "1.1.1.1");	// This sending normalized (without '\r')
+    fs.copy("private.txt" … "1.1.1.2");	// This sending without repeated spaces
+    fs.copy("private.txt" … "1.1.1.3");	// This normalized and without repeated spaces
 }
 ```
 
@@ -41,7 +49,7 @@ In all three cases (whether copying the file to disk or sending over Internet or
 ```java
 void main () {
     …
-    fs.copy("privado.txt" … "1.1.1.1");
+    fs.copy("private.txt" … "1.1.1.1");
 
     System.out.println("# characters have been sent " + …);
 }
@@ -54,7 +62,7 @@ Both when normalizing (removing '\r') and when removing repeated spaces, we also
 ```java
 void main () {
     …
-    fs.copy("privado.txt" … "1.1.1.1"); 	// Sent normalized (without '\r')
+    fs.copy("private.txt" … "1.1.1.1"); 	// Sent normalized (without '\r')
 
     System.out.println("Initially there were " + … + "# characters");
     System.out.println("After normalizing, " + … + "# characters have been sent");
@@ -68,7 +76,7 @@ Encrypting a large file is a slow operation. We want that, if the same file is g
 ```java
 void main () {
     …
-    fs.copy("privado.txt" … "1.1.1.1" … "Galaxy S");	// Sent encrypted to both
+    fs.copy("private.txt" … "1.1.1.1" … "Galaxy S");	// Sent encrypted to both
 }
 ```
 
