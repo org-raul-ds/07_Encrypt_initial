@@ -1,5 +1,7 @@
 # Software Design Laboratory Class
 
+**⚠️ IMPORTANT NOTE:** This repository will be **deleted** at the end of the course. Make sure to save any code you want to keep elsewhere.
+
 ## ✏️ Additional Instructions
 
 ### Reference Design
@@ -57,7 +59,7 @@ void main () {
 
 ### Modification 4
 
-Both when normalizing (removing '\r') and when removing repeated spaces, we also want to know how many characters there were before processing.
+Both when normalizing (removing '\r') and when removing repeated spaces, we also want to know how many characters there were **before** processing.
 
 ```java
 void main () {
@@ -71,7 +73,7 @@ void main () {
 
 ### Modification 5
 
-Encrypting a large file is a slow operation. We want that, if the same file is going to be sent both over Internet and Bluetooth, it encrypts only once to save time.
+Encrypting a large file is a slow operation. We want that, if the same file is going to be sent both over Internet and Bluetooth, it encrypts **only once** to save time.
 
 ```java
 void main () {
@@ -89,7 +91,6 @@ To submit your solution:
 - Run `git commit -m "final code"`.
 - Run `git push`.
 
-**⚠️ IMPORTANT NOTE:** This repository will be **deleted** at the end of the course. Make sure to save any code you want to keep elsewhere.
 
 ## ✅ Exercise Solution
 
