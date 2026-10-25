@@ -1,3 +1,5 @@
+merge-gits.properties
+
 # Maven target directory
 /target/
 
