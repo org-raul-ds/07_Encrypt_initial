@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Main",
             "request": "launch",
-            "mainClass": "es.uniovi.ds.lab.main.Main",
+            "mainClass": "es.uniovi.ds.lab.v2.main.Main",
         }
     ]
 }
