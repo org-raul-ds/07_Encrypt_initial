@@ -4,9 +4,9 @@
 
 ## ✏️ Additional Instructions
 
-### Reference Design
+### Base Design
 
-Currently, the design to copy a file to different outputs is as follows:
+The current design for copying a file to different destinations is as follows:
 
 ```java
 system.copy("private.txt", new FileOutput("copy.txt"));
@@ -15,13 +15,17 @@ system.copy("private.txt", new BluetoothOutput("iPhone"));
 ```
 
 We are asked to implement the following changes:
-1. When making a copy of a file on disk (the first statement), we want to normalize line breaks (remove '\r' and leave only '\n').
-2. When sending over the Internet, we want to encrypt (+1 if it's a letter or digit).
-3. When sending over Bluetooth, we want to encrypt (in the same way as before) and remove repeated spaces.
+1. When copying a file **to disk** (the first statement), normalize line breaks by removing '\r' and keeping only '\n'.
+2. When sending a file over the **Internet**, encrypt it by shifting each letter or digit forward by one.
+3. When sending a file over **Bluetooth**, encrypt it in the same way and remove repeated spaces.
 
-### Modification 1
+The design resulting from these changes will be referred to as the **base design**.
 
-When making a copy of a file on disk (what `copyFile` previously did), in addition to normalizing line breaks (removing '\r'), there are times when we also want to encrypt. In the main, it should be possible to indicate whether, when making the copy, we want to encrypt or not.
+The application will then be extended in several ways. These extensions will put the quality of the resulting design to the test.
+
+### Extension 1
+
+When copying a file to disk (as `copyFile` did previously), we sometimes want to encrypt it as well as normalize its line breaks (remove '\r'). The `main` method should let us specify whether each copy should be encrypted.
 
 ```java
 void main () {
@@ -31,54 +35,54 @@ void main () {
 }
 ```
 
-### Modification 2
+### Extension 2
 
-When sending over the Internet, in addition to encrypting, we want to be able to indicate whether to normalize (remove '\r') and/or remove repeated spaces (one of them or both).
+When sending a file over the Internet, in addition to encrypting it, we want to be able to specify whether to normalize line breaks (remove '\r'), remove repeated spaces, or do both.
 
 ```java
 void main () {
     …
-    fs.copy("private.txt" … "1.1.1.1");	// This sending normalized (without '\r')
-    fs.copy("private.txt" … "1.1.1.2");	// This sending without repeated spaces
-    fs.copy("private.txt" … "1.1.1.3");	// This normalized and without repeated spaces
+    fs.copy("private.txt" … "1.1.1.1");	// Send with normalized line breaks (without '\r')
+    fs.copy("private.txt" … "1.1.1.2");	// Send without repeated spaces
+    fs.copy("private.txt" … "1.1.1.3");	// Send with normalized line breaks and without repeated spaces
 }
 ```
 
-### Modification 3
+### Extension 3
 
-In all three cases (whether copying the file to disk or sending over Internet or Bluetooth) we want to know, from the Main, the number of characters copied.
+In all three cases (copying a file to disk, or sending it over the Internet or Bluetooth), we want `Main` to be able to report the number of characters copied or sent.
 
 ```java
 void main () {
     …
     fs.copy("private.txt" … "1.1.1.1");
 
-    System.out.println("# characters have been sent " + …);
+    System.out.println("Number of characters sent: " + …);
 }
 ```
 
-### Modification 4
+### Extension 4
 
-Both when normalizing (removing '\r') and when removing repeated spaces, we also want to know how many characters there were **before** processing.
+When normalizing line breaks (removing '\r') or removing repeated spaces, we also want to know how many characters there were **before** processing.
 
 ```java
 void main () {
     …
-    fs.copy("private.txt" … "1.1.1.1"); 	// Sent normalized (without '\r')
+    fs.copy("private.txt" … "1.1.1.1"); 	// Send with normalized line breaks (without '\r')
 
-    System.out.println("Initially there were " + … + "# characters");
-    System.out.println("After normalizing, " + … + "# characters have been sent");
+    System.out.println("There were initially " + … + " characters");
+    System.out.println("After normalization, " + … + " characters have been sent");
 }
 ```
 
-### Modification 5
+### Extension 5
 
-Encrypting a large file is a slow operation. We want that, if the same file is going to be sent both over Internet and Bluetooth, it encrypts **only once** to save time.
+Encrypting a large file is a slow operation. If the same file is sent over both the Internet and Bluetooth, we want it to be encrypted **only once** to save time.
 
 ```java
 void main () {
     …
-    fs.copy("private.txt" … "1.1.1.1" … "Galaxy S");	// Sent encrypted to both
+    fs.copy("private.txt" … "1.1.1.1" … "Galaxy S");	// Send an encrypted copy to both destinations
 }
 ```
 
